@@ -13,7 +13,13 @@ const login = async (username: string, password: string) => {
     throw new AuthException(400, 'Username or password is wrong');
   }
   return jwt.sign(
-    { id: user.id, username: user.username, email: user.email, role: user.role },
+    {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      role: user.role,
+      fullName: user.fullName,
+    },
     process.env.TOKEN_SECRET
   );
 };
